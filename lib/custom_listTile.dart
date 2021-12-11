@@ -10,7 +10,7 @@ class CustomListTile extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.all(14.0),
+            padding: const EdgeInsets.all(13.0),
             child: Text(text),
           ),
         ],
