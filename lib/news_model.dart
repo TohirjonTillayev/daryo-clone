@@ -4,49 +4,56 @@ import 'package:flutter/material.dart';
 
 Widget NewsInfo(BuildContext context, NewsList Info) {
   return Card(
-    color: Colors.blue[50],
-    child: Row(
-      children: [
-        Expanded(
-          child: Column(
-            children: [
-              Row(
-                children: const [
-                  Text("Mahalliy"),
-                ],
+      child: Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text("Mahalliy"),
+          Row(
+            children: const [
+              Text(
+                "00:47 | 12 dekabr 2021|",
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
               ),
-              Image.asset(
-                Info.imageUrl,
-                width: 200.0,
-                height: 150.0,
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Padding(padding: const EdgeInsets.only(bottom: 50.0)),
-                  Text("00:47 | 12 dekabr 2021"),
-                  Icon(Icons.remove_red_eye_outlined),
-                  Text("456")
-                ],
+              Icon(
+                Icons.remove_red_eye_outlined,
+                color: Colors.blue,
               ),
               Text(
-                Info.topic,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                "456",
+                style: TextStyle(color: Colors.blue),
               ),
-              Text(Info.info)
             ],
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+      const SizedBox(
+        width: 12,
+      ),
+      Row(
+        children: [
+          Image.asset(
+            Info.imageUrl,
+            width: 150.0,
+            height: 150.0,
+          ),
+          const SizedBox(
+            width: 10.0,
+          ),
+          Expanded(
+            child: Text(
+              Info.topic,
+              semanticsLabel: Info.info,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    ],
+  ));
 }
 
 class NewsList {
@@ -63,7 +70,7 @@ class NewsList {
         ""),
     NewsList(
         "assets/foto2.jpg",
-        "Bayram dasturxoniga ko‘rk bag‘ishlovchi yegulik:\nkivi va pishloqli buterbrod tayyorlaymiz",
+        "Bayram dasturxoniga ko‘rk\n bag‘ishlovchi yegulik:\nkivi va pishloqli buterbrod tayyorlaymiz",
         ""),
     NewsList(
         "assets/foto3.jpg",

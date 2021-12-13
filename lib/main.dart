@@ -193,18 +193,34 @@ class _daryoAppState extends State<daryoApp> {
             ListView.builder(
               itemCount: NewsList.list.length,
               itemBuilder: (BuildContext context, int index) {
+                Container(
+                  child: Divider(
+                    thickness: 12.0,
+                    color: Colors.green,
+                  ),
+                );
                 return NewsInfo(context, NewsList.list[index]);
               },
             ),
             ListView.builder(
               itemCount: NewsList.list.length,
               itemBuilder: (BuildContext context, int index) {
+                Container(
+                  child: Divider(
+                    thickness: 12.0,
+                  ),
+                );
                 return NewsInfo(context, NewsList.list[index]);
               },
             ),
             ListView.builder(
               itemCount: NewsList.list.length,
               itemBuilder: (BuildContext context, int index) {
+                Container(
+                  child: Divider(
+                    thickness: 12.0,
+                  ),
+                );
                 return NewsInfo(context, NewsList.list[index]);
               },
             ),
