@@ -1,4 +1,5 @@
 import 'package:daryo_clone/custom_listTile.dart';
+import 'package:daryo_clone/krill_lotin.dart';
 import 'package:flutter/material.dart';
 import 'news_model.dart';
 
@@ -60,17 +61,7 @@ class _daryoAppState extends State<daryoApp> {
                               color: Colors.white,
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white,
-                                ),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(20.0))),
-                            child: const Text('LOTINCHA | КИРИЛЛЧА',
-                                style: TextStyle(color: Colors.white)),
-                          ),
+                          selectLang(),
                         ],
                       ),
                     ),
