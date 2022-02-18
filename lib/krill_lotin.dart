@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:daryo_clone/main.dart';
 
 List<bool> _isSelected = [false, true];
+
 Widget selectLang() {
   return Container(
     width: 180,
@@ -50,7 +50,7 @@ Widget selectLang() {
                 " KIRILCHA",
                 style: TextStyle(
                     fontSize: 16,
-                    color: _isSelected[0] ? Colors.white : Colors.blue),
+                    color: _isSelected[1] ? Colors.blue : Colors.white),
               ),
               alignment: Alignment.center,
             ),
@@ -66,7 +66,6 @@ Widget selectLang() {
 }
 
 void setState(int index) {
-  List<bool> _isSelected = [false, true];
   if (index == 0) {
     _isSelected[0] = true;
     _isSelected[1] = false;

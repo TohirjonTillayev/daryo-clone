@@ -1,59 +1,69 @@
-// ignore_for_file: non_constant_identifier_names
-
+import 'package:intl/intl.dart';
+import 'package:daryo_clone/Data/articles.dart';
 import 'package:flutter/material.dart';
 
-Widget NewsInfo(BuildContext context, NewsList Info) {
-  return Card(
-      child: Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text("Mahalliy"),
-          Row(
-            children: const [
-              Text(
-                "00:47 | 12 dekabr 2021|",
-                style: TextStyle(
-                  color: Colors.grey,
+class NewsInfo extends StatelessWidget {
+  final Article article;
+  const NewsInfo({Key? key , required this.article}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var dateParsed = DateTime.tryParse(article.publishedAt);
+    dateParsed = dateParsed ?? DateTime.now();
+    String publishDate =
+    DateFormat('dd-mm, yyyy').format(dateParsed).toString();
+    String publishTime = DateFormat('hh:mm').format(dateParsed).toString();
+
+    return  Card(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                 Text(article.source.name),
+                Row(
+                  children: [
+                    Text(
+                      '$publishDate | $publishTime',
+                      style: const TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Icon(
+                      Icons.remove_red_eye_outlined,
+                      color: Colors.blue,
+                    ),
+                    Text(
+                      "456",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ],
                 ),
-              ),
-              Icon(
-                Icons.remove_red_eye_outlined,
-                color: Colors.blue,
-              ),
-              Text(
-                "456",
-                style: TextStyle(color: Colors.blue),
-              ),
-            ],
-          ),
-        ],
-      ),
-      const SizedBox(
-        width: 12,
-      ),
-      Row(
-        children: [
-          Image.asset(
-            Info.imageUrl,
-            width: 150.0,
-            height: 150.0,
-          ),
-          const SizedBox(
-            width: 10.0,
-          ),
-          Expanded(
-            child: Text(
-              Info.topic,
-              semanticsLabel: Info.info,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              ],
             ),
-          ),
-        ],
-      ),
-    ],
-  ));
+            const SizedBox(
+              width: 12,
+            ),
+            Row(
+              children: [
+               Image.network(article.urlToImage ?? article.defaultImageLink,
+               width: 200.0,
+               height: 100.0,),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Expanded(
+                  child: Text(
+                    article.title,
+                    semanticsLabel: article.title,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ));
+  }
 }
 
 class NewsList {
